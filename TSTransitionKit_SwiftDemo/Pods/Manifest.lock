@@ -1,0 +1,30 @@
+PODS:
+  - TSBaseViewController_Swift (1.0.3):
+    - TSToolKit_Swift
+  - TSToolKit_Swift (1.1.0)
+
+DEPENDENCIES:
+  - TSBaseViewController_Swift (from `https://github.com/StoneStoneStoneWang/TSBaseViewController_Swift.git`)
+  - TSToolKit_Swift (from `https://github.com/StoneStoneStoneWang/TSToolKit_Swift.git`)
+
+EXTERNAL SOURCES:
+  TSBaseViewController_Swift:
+    :git: https://github.com/StoneStoneStoneWang/TSBaseViewController_Swift.git
+  TSToolKit_Swift:
+    :git: https://github.com/StoneStoneStoneWang/TSToolKit_Swift.git
+
+CHECKOUT OPTIONS:
+  TSBaseViewController_Swift:
+    :commit: 2bb364b2878786c6dcc1bcf92e85b0fd125a2b60
+    :git: https://github.com/StoneStoneStoneWang/TSBaseViewController_Swift.git
+  TSToolKit_Swift:
+    :commit: 2b770fce37509f1f15d901c43370c76de2b23ab3
+    :git: https://github.com/StoneStoneStoneWang/TSToolKit_Swift.git
+
+SPEC CHECKSUMS:
+  TSBaseViewController_Swift: 50accfac605c31301d47672b1aa4a006c0ca85ae
+  TSToolKit_Swift: 03f44bc0f664f3e95afc1488027c29e7f19e8fe5
+
+PODFILE CHECKSUM: 2255dd5b5176bd1c98c4e32e4d4b0765363c50cf
+
+COCOAPODS: 1.5.3

@@ -1,0 +1,6 @@
+framework module Pods_TSTransitionKit_SwiftDemo {
+  umbrella header "Pods-TSTransitionKit_SwiftDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}
