@@ -34,7 +34,7 @@ extension UITabBarController {
             childVC.tabBarItem.selectedImage = UIImage(named: selectedImageName)?.withRenderingMode(.alwaysOriginal)
         }
         
-        let navi = TSNaviController(rootViewController: childVC)
+        let navi = WLNaviController(rootViewController: childVC)
         
         addChild(navi)
     }

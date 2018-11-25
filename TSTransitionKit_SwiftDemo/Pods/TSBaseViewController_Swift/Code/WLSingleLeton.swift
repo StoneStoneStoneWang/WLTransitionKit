@@ -1,5 +1,5 @@
 //
-//  TSSingleLeton.swift
+//  WLSingleLeton.swift
 //  TSBaseViewController_Swift
 //
 //  Created by three stone 王 on 2018/11/20.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 // 使用某些功能的时候 需要 在appdidluanching的时候调用这个函数
-public class TSSingleLeton {
+public class WLSingleLeton {
     
     public static func needReg() {
         

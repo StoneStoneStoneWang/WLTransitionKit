@@ -1,14 +1,14 @@
 //
-//  TSBaseAnimation.swift
-//  TSTransitionKit_SwiftDemo
+//  WLBaseAnimation.swift
+//  WLTransitionKit_SwiftDemo
 //
 //  Created by three stone 王 on 2018/11/20.
-//  Copyright © 2018年 three stone 王. All rights reserved.
+//  Copyright © 2018年 three stone 王. All righWL reserved.
 //
 
 import UIKit
 
-public protocol TSBaseAnimationDelegate {
+public protocol WLBaseAnimationDelegate {
     
     func pushEnded()
     
@@ -19,13 +19,13 @@ public protocol TSBaseAnimationDelegate {
     func popCancled()
 }
 
-public class TSBaseAnimation: NSObject {
+open class WLBaseAnimation: NSObject {
     
     open var transitionType: UINavigationController.Operation = .push
     
     open var interactivePopTransition: UIPercentDrivenInteractiveTransition?
     
-    open var mDelegate: TSBaseAnimationDelegate!
+    open var mDelegate: WLBaseAnimationDelegate!
     
     fileprivate var duration: TimeInterval = 0
     
@@ -34,7 +34,7 @@ public class TSBaseAnimation: NSObject {
         return self.init(transitionType,duration)
     }
     
-    convenience required init(_ transitionType: UINavigationController.Operation ,_ duration: TimeInterval) {
+    convenience required public init(_ transitionType: UINavigationController.Operation ,_ duration: TimeInterval) {
         
         self.init()
         
@@ -47,7 +47,7 @@ public class TSBaseAnimation: NSObject {
     
     open func pop(_ transitionContext: UIViewControllerContextTransitioning) { }
 }
-extension TSBaseAnimation: UIViewControllerAnimatedTransitioning {
+extension WLBaseAnimation: UIViewControllerAnimatedTransitioning {
     open func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         
         return duration
@@ -63,10 +63,32 @@ extension TSBaseAnimation: UIViewControllerAnimatedTransitioning {
             pop(transitionContext)
         }
     }
+    open func animationEnded(_ transitionCompleted: Bool) {
+        
+        if !transitionCompleted {
+            
+            if transitionType == .push {
+                
+                pushCancled()
+            } else if transitionType == .pop {
+                
+                popCancled()
+            }
+            return
+        }
+        
+        if transitionType == .push {
+            
+            pushEnded()
+        } else if transitionType == .pop {
+            
+            popEnded()
+        }
+    }
 }
 
 // MARK: push and pop 状态函数
-extension TSBaseAnimation: TSBaseAnimationDelegate {
+extension WLBaseAnimation: WLBaseAnimationDelegate {
     
     @objc open func pushEnded() {
         

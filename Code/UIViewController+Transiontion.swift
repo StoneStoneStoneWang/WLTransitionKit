@@ -1,15 +1,17 @@
 //
 //  UIViewController+Transiontion.swift
-//  TSTransitionKit_SwiftDemo
+//  WLTransitionKit_SwiftDemo
 //
 //  Created by three stone 王 on 2018/11/20.
-//  Copyright © 2018年 three stone 王. All rights reserved.
+//  Copyright © 2018年 three stone 王. All righWL reserved.
 //
 
 import Foundation
 import UIKit
 import TSToolKit_Swift
-private let TSPopPanResponseW: CGFloat = 100
+private let WLPopPanResponseW: CGFloat = 100
+
+private var kAnimationConfigKey: String = ""
 
 extension UIViewController {
     
@@ -42,18 +44,16 @@ extension UIViewController {
         
         progress = min(1.0, max(0.0, progress))
         
-        printLog(message: progress)
-        
         if recognizer.state == .began {
             
             interactivePopTransition = UIPercentDrivenInteractiveTransition()
             
             navigationController?.popViewController(animated: true)
-
+            
         } else if recognizer.state == .changed {
             
             interactivePopTransition?.update(CGFloat(progress))
-        
+            
         } else if recognizer.state == .ended || recognizer.state == .cancelled {
             
             if progress > 0.25 {
@@ -67,13 +67,25 @@ extension UIViewController {
             interactivePopTransition = nil
         }
     }
-    
+    // 可以在子类里设置响应手势的f范围
     @objc open func popPanResponseW() -> CGFloat {
         
-        return TSPopPanResponseW
+        return WLPopPanResponseW
     }
-    @objc open func __ts_popPan_swizzled_viewDidLoad() {
-        __ts_popPan_swizzled_viewDidLoad()
+    
+    public var __animation_config: WLNaviAnimationConfig? {
+        
+        set {
+            objc_setAssociatedObject(self, &kAnimationConfigKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+        get {
+            return objc_getAssociatedObject(self, &kAnimationConfigKey) as? WLNaviAnimationConfig
+        }
+    }
+    
+    
+    @objc open func __WL_popPan_swizzled_viewDidLoad() {
+        __WL_popPan_swizzled_viewDidLoad()
         
         if isAddPan() {
             
@@ -81,16 +93,14 @@ extension UIViewController {
         }
     }
 }
+
 extension UIViewController: UIGestureRecognizerDelegate {
     
     public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         
         return gestureRecognizer.location(in: view).x > 0 && gestureRecognizer.location(in: view).x < popPanResponseW()
     }
-    
 }
-
-
 extension UIViewController {
     
     public static func popPanClassInit() {
@@ -100,7 +110,7 @@ extension UIViewController {
     
     fileprivate static let viewDidLoad_swizzleMethod: Void = {
         let originalSelector = #selector(viewDidLoad)
-        let swizzledSelector = #selector(__ts_popPan_swizzled_viewDidLoad)
+        let swizzledSelector = #selector(__WL_popPan_swizzled_viewDidLoad)
         swizzlingForClass(UIViewController.self, originalSelector: originalSelector, swizzledSelector: swizzledSelector)
     }()
     
@@ -121,19 +131,19 @@ extension UIViewController {
 }
 private var kInteractiveKey: String = ""
 
-extension UIViewController: TSViewControllerPushAnimationDelegate {
+extension UIViewController: WLViewControllerPushAnimationDelegate {
     
-    @objc open func ts_prefersNavigationBarHidden() -> Bool {
+    @objc open func WL_prefersNavigationBarHidden() -> Bool {
         
         return false
     }
     
-    @objc open func ts_prefersTabbarHidden() -> Bool {
+    @objc open func WL_prefersTabbarHidden() -> Bool {
         
         return true
     }
     
-   @objc open var interactivePopTransition: UIPercentDrivenInteractiveTransition? {
+    @objc open var interactivePopTransition: UIPercentDrivenInteractiveTransition? {
         
         set {
             objc_setAssociatedObject(self, &kInteractiveKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
@@ -143,45 +153,26 @@ extension UIViewController: TSViewControllerPushAnimationDelegate {
             return objc_getAssociatedObject(self, &kInteractiveKey) as? UIPercentDrivenInteractiveTransition
         }
     }
-    
-    @objc open var ts_naviChildViewControllersCount: Int {
-        
-        return navigationController?.children.count ?? 0
-    }
-    
-    @objc open var ts_tabbarController: UITabBarController? {
-        
-        return tabBarController
-    }
-    
-    @objc open var ts_naviController: UINavigationController? {
-        
-        return navigationController
-    }
-    
-    @objc open var ts_contentView: UIView {
-        
-        return view
-    }
 }
 
-extension UIViewController: TSBaseAnimationDelegate {
+extension UIViewController: WLBaseAnimationDelegate {
     @objc open func pushEnded() {
         
+        printLog(message: "pushEnded")
     }
     
     @objc open func popEnded() {
         
-        
+        printLog(message: "popEnded")
     }
     
     @objc open func pushCancled() {
         
+        printLog(message: "pushCancled")
     }
     
     @objc open func popCancled() {
         
-        
+        printLog(message: "popCancled")
     }
 }
-

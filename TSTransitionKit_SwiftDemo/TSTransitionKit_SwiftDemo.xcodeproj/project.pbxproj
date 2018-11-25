@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5C6EFA9ABF059C04553997F8 /* Pods_TSTransitionKit_SwiftDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04651AD0C6E2701193D340EF /* Pods_TSTransitionKit_SwiftDemo.framework */; };
+		6C3876F321A9541C008C44BA /* WLNaviAnimationConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3876F221A9541C008C44BA /* WLNaviAnimationConfig.swift */; };
 		6C410C8D21A44C22008FBA44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C410C8C21A44C22008FBA44 /* AppDelegate.swift */; };
 		6C410C8F21A44C22008FBA44 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C410C8E21A44C22008FBA44 /* ViewController.swift */; };
 		6C410C9421A44C23008FBA44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C410C9321A44C23008FBA44 /* Assets.xcassets */; };
@@ -15,14 +16,14 @@
 		6C410CA221A44C23008FBA44 /* TSTransitionKit_SwiftDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C410CA121A44C23008FBA44 /* TSTransitionKit_SwiftDemoTests.swift */; };
 		6C410CAD21A44C23008FBA44 /* TSTransitionKit_SwiftDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C410CAC21A44C23008FBA44 /* TSTransitionKit_SwiftDemoUITests.swift */; };
 		6C410CBC21A44D05008FBA44 /* UIViewController+Transiontion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C410CBB21A44D05008FBA44 /* UIViewController+Transiontion.swift */; };
-		6C410CBE21A44F4D008FBA44 /* TSBaseAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C410CBD21A44F4D008FBA44 /* TSBaseAnimation.swift */; };
-		6C410CC021A4583B008FBA44 /* TSNaviAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C410CBF21A4583B008FBA44 /* TSNaviAnimation.swift */; };
-		6C410CC221A45AD3008FBA44 /* TSNaviAnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C410CC121A45AD3008FBA44 /* TSNaviAnimationManager.swift */; };
+		6C410CBE21A44F4D008FBA44 /* WLBaseAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C410CBD21A44F4D008FBA44 /* WLBaseAnimation.swift */; };
+		6C410CC021A4583B008FBA44 /* WLNaviAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C410CBF21A4583B008FBA44 /* WLNaviAnimation.swift */; };
+		6C410CC221A45AD3008FBA44 /* WLViewControllerPushAnimationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C410CC121A45AD3008FBA44 /* WLViewControllerPushAnimationDelegate.swift */; };
 		6C410CC421A4EC30008FBA44 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 6C410CC321A4EC30008FBA44 /* Podfile */; };
 		6C410CC621A505D0008FBA44 /* UINavigationController+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C410CC521A505D0008FBA44 /* UINavigationController+Transition.swift */; };
 		6C410CC821A5068B008FBA44 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C410CC721A5068B008FBA44 /* MainViewController.swift */; };
 		6C410CCA21A507CB008FBA44 /* TSConfig_Swift.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6C410CC921A507CB008FBA44 /* TSConfig_Swift.plist */; };
-		6C410CCE21A6B514008FBA44 /* TSNavigationControllerDelegateImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C410CCD21A6B514008FBA44 /* TSNavigationControllerDelegateImpl.swift */; };
+		6C410CCE21A6B514008FBA44 /* WLNavigationControllerDelegateImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C410CCD21A6B514008FBA44 /* WLNavigationControllerDelegateImpl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		04651AD0C6E2701193D340EF /* Pods_TSTransitionKit_SwiftDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TSTransitionKit_SwiftDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CE1C7B9330A8AEE68E2BB68 /* Pods-TSTransitionKit_SwiftDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TSTransitionKit_SwiftDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TSTransitionKit_SwiftDemo/Pods-TSTransitionKit_SwiftDemo.release.xcconfig"; sourceTree = "<group>"; };
+		6C3876F221A9541C008C44BA /* WLNaviAnimationConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLNaviAnimationConfig.swift; sourceTree = "<group>"; };
 		6C410C8921A44C22008FBA44 /* TSTransitionKit_SwiftDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TSTransitionKit_SwiftDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C410C8C21A44C22008FBA44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6C410C8E21A44C22008FBA44 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,14 +60,14 @@
 		6C410CAC21A44C23008FBA44 /* TSTransitionKit_SwiftDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSTransitionKit_SwiftDemoUITests.swift; sourceTree = "<group>"; };
 		6C410CAE21A44C23008FBA44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6C410CBB21A44D05008FBA44 /* UIViewController+Transiontion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Transiontion.swift"; sourceTree = "<group>"; };
-		6C410CBD21A44F4D008FBA44 /* TSBaseAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSBaseAnimation.swift; sourceTree = "<group>"; };
-		6C410CBF21A4583B008FBA44 /* TSNaviAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSNaviAnimation.swift; sourceTree = "<group>"; };
-		6C410CC121A45AD3008FBA44 /* TSNaviAnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSNaviAnimationManager.swift; sourceTree = "<group>"; };
+		6C410CBD21A44F4D008FBA44 /* WLBaseAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLBaseAnimation.swift; sourceTree = "<group>"; };
+		6C410CBF21A4583B008FBA44 /* WLNaviAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLNaviAnimation.swift; sourceTree = "<group>"; };
+		6C410CC121A45AD3008FBA44 /* WLViewControllerPushAnimationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLViewControllerPushAnimationDelegate.swift; sourceTree = "<group>"; };
 		6C410CC321A4EC30008FBA44 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		6C410CC521A505D0008FBA44 /* UINavigationController+Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Transition.swift"; sourceTree = "<group>"; };
 		6C410CC721A5068B008FBA44 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		6C410CC921A507CB008FBA44 /* TSConfig_Swift.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TSConfig_Swift.plist; sourceTree = "<group>"; };
-		6C410CCD21A6B514008FBA44 /* TSNavigationControllerDelegateImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSNavigationControllerDelegateImpl.swift; sourceTree = "<group>"; };
+		6C410CCD21A6B514008FBA44 /* WLNavigationControllerDelegateImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLNavigationControllerDelegateImpl.swift; sourceTree = "<group>"; };
 		B9189703890D53574FDD32F0 /* Pods-TSTransitionKit_SwiftDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TSTransitionKit_SwiftDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TSTransitionKit_SwiftDemo/Pods-TSTransitionKit_SwiftDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,11 +166,12 @@
 			isa = PBXGroup;
 			children = (
 				6C410CBB21A44D05008FBA44 /* UIViewController+Transiontion.swift */,
-				6C410CBD21A44F4D008FBA44 /* TSBaseAnimation.swift */,
-				6C410CBF21A4583B008FBA44 /* TSNaviAnimation.swift */,
-				6C410CC121A45AD3008FBA44 /* TSNaviAnimationManager.swift */,
+				6C3876F221A9541C008C44BA /* WLNaviAnimationConfig.swift */,
+				6C410CBD21A44F4D008FBA44 /* WLBaseAnimation.swift */,
+				6C410CBF21A4583B008FBA44 /* WLNaviAnimation.swift */,
+				6C410CC121A45AD3008FBA44 /* WLViewControllerPushAnimationDelegate.swift */,
 				6C410CC521A505D0008FBA44 /* UINavigationController+Transition.swift */,
-				6C410CCD21A6B514008FBA44 /* TSNavigationControllerDelegateImpl.swift */,
+				6C410CCD21A6B514008FBA44 /* WLNavigationControllerDelegateImpl.swift */,
 			);
 			name = Code;
 			path = ../../Code;
@@ -367,11 +370,12 @@
 			files = (
 				6C410C8F21A44C22008FBA44 /* ViewController.swift in Sources */,
 				6C410C8D21A44C22008FBA44 /* AppDelegate.swift in Sources */,
-				6C410CC021A4583B008FBA44 /* TSNaviAnimation.swift in Sources */,
-				6C410CCE21A6B514008FBA44 /* TSNavigationControllerDelegateImpl.swift in Sources */,
-				6C410CBE21A44F4D008FBA44 /* TSBaseAnimation.swift in Sources */,
+				6C410CC021A4583B008FBA44 /* WLNaviAnimation.swift in Sources */,
+				6C410CCE21A6B514008FBA44 /* WLNavigationControllerDelegateImpl.swift in Sources */,
+				6C410CBE21A44F4D008FBA44 /* WLBaseAnimation.swift in Sources */,
 				6C410CBC21A44D05008FBA44 /* UIViewController+Transiontion.swift in Sources */,
-				6C410CC221A45AD3008FBA44 /* TSNaviAnimationManager.swift in Sources */,
+				6C410CC221A45AD3008FBA44 /* WLViewControllerPushAnimationDelegate.swift in Sources */,
+				6C3876F321A9541C008C44BA /* WLNaviAnimationConfig.swift in Sources */,
 				6C410CC621A505D0008FBA44 /* UINavigationController+Transition.swift in Sources */,
 				6C410CC821A5068B008FBA44 /* MainViewController.swift in Sources */,
 			);

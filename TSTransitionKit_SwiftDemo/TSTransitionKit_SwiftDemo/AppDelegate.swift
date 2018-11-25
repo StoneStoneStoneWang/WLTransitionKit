@@ -18,9 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-        TSSingleLeton.needReg()
+        WLSingleLeton.needReg()
         
-        TSBaseViewController.popPanClassInit()
+        UIViewController.popPanClassInit()
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
@@ -55,4 +55,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-

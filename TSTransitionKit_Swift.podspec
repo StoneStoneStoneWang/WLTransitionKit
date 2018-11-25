@@ -3,7 +3,7 @@
 Pod::Spec.new do |s|
 
 s.name         = "TSTransitionKit_Swift"
-s.version      = "1.0.0"
+s.version      = "1.0.1"
 s.summary      = "A Lib For transition."
 s.description  = <<-DESC
 A Lib For vc.

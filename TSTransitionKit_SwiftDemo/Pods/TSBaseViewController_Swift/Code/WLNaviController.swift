@@ -1,5 +1,5 @@
 //
-//  TSNaviController.swift
+//  WLNaviController.swift
 //  TSBaseViewController_Swift
 //
 //  Created by three stone 王 on 2018/11/20.
@@ -44,41 +44,14 @@ public enum TSNaviTransionType {
     case push
     
     case present
+    
+    case drawerPush // 抽屉式的push
+    
+    case drawer // 抽屉
 }
 
-open class TSNaviController: UINavigationController {
+open class WLNaviController: UINavigationController {
     
-    open var navBarHairlineImageView: UIImageView? {
-        
-        return findHairlineImageViewUnder(view: navigationBar)
-    }
-    fileprivate func findHairlineImageViewUnder(view: UIView) -> UIImageView? {
-        
-        if view is UIImageView && view.bounds.height <= 1.0 {
-            return view as? UIImageView
-        }
-        for subView in view.subviews {
-            
-            let imageView = findHairlineImageViewUnder(view: subView)
-            
-            if imageView != nil {
-                
-                return imageView
-            }
-        }
-        return nil
-    }
-
-    open func isLineHidden() -> Bool {
-        
-        return true
-    }
-    
-    override open func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        navBarHairlineImageView?.isHidden = isLineHidden()
-    }
     open var transitionType: TSNaviTransionType = .push
 
     public override init(rootViewController: UIViewController) {
@@ -101,14 +74,14 @@ open class TSNaviController: UINavigationController {
         
         if !shared.NaviBackground_HEXColor.isEmpty {
             
-            navigationBar.barTintColor = TSHEXCOLOR(hexColor: shared.NaviBackground_HEXColor)
+            navigationBar.barTintColor = WLHEXCOLOR(hexColor: shared.NaviBackground_HEXColor)
         }
         
         if !shared.Title_HEXColor.isEmpty {
             
             navigationBar.titleTextAttributes = [
                 NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: shared.Title_FontSize),
-                NSAttributedString.Key.foregroundColor: TSHEXCOLOR(hexColor: shared.Title_HEXColor)
+                NSAttributedString.Key.foregroundColor: WLHEXCOLOR(hexColor: shared.Title_HEXColor)
             ]
         }
     }
@@ -135,7 +108,7 @@ open class TSNaviController: UINavigationController {
         super.pushViewController(viewController, animated: animated)
     }
 }
-extension TSNaviController {
+extension WLNaviController {
     
     @objc func pop() {
         

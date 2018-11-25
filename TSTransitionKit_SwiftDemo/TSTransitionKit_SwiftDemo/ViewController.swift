@@ -11,7 +11,7 @@ import UIKit
 import TSToolKit_Swift
 import TSBaseViewController_Swift
 
-public class ViewController: UIViewController {
+public class ViewController: WLBaseViewController {
     
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +25,15 @@ public class ViewController: UIViewController {
         btn.addTarget(self, action: #selector(onClick), for: .touchUpInside)
         
         view.backgroundColor = .white
-
     }
     
     let btn = UIButton(type: .custom)
     
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+    }
 }
 
 extension ViewController {
@@ -43,12 +47,12 @@ extension ViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    @objc open override func ts_prefersTabbarHidden() -> Bool {
+    @objc open override func WL_prefersTabbarHidden() -> Bool {
         
         return false
     }
     
-    @objc open override func ts_prefersNavigationBarHidden() -> Bool {
+    @objc open override func WL_prefersNavigationBarHidden() -> Bool {
         
         return false
     }

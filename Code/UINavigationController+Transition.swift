@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import TSBaseViewController_Swift
 import TSToolKit_Swift
 //Users/threestonewang/Desktop/新的仓库/TSTransitionKit_Swift/Code/UINavigationController+Transition.swift:12:35: Conformance of 'UINavigationController' to protocol 'UINavigationControllerDelegate' was already stated in the type's module 'UIKit'
 // MARK: 如果使用这个转场 请在 didluanch里 TSSingleLeton.needReg()
@@ -18,21 +17,20 @@ private var kimplKey: String = ""
 
 extension UINavigationController {
     
-    public var ts_impl: TSNavigationControllerDelegateImpl? {
+    public var __wl_impl: WLNavigationControllerDelegateImpl? {
         
         set {
             objc_setAssociatedObject(self, &kimplKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
         get {
-            return objc_getAssociatedObject(self, &kimplKey) as? TSNavigationControllerDelegateImpl
+            return objc_getAssociatedObject(self, &kimplKey) as? WLNavigationControllerDelegateImpl
         }
     }
-    open override func __ts_popPan_swizzled_viewDidLoad() {
+    
+    open override func __WL_popPan_swizzled_viewDidLoad() {
         
-        ts_impl = TSNavigationControllerDelegateImpl()
+        __wl_impl = WLNavigationControllerDelegateImpl()
         
-        delegate = ts_impl
-        
-        printLog(message: ts_impl)
+        delegate = __wl_impl
     }
 }
