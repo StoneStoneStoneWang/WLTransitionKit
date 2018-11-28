@@ -53,4 +53,8 @@ open class WLNaviAnimationConfig: NSObject {
     var statusStyle: UIBarStyle = .default
     
     var statusTintColor: UIColor = .clear
+    
+    var isTranslucent: Bool = true
+    
+    var title: String = ""
 }

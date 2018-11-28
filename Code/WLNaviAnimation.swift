@@ -121,7 +121,7 @@ public class WLNaviAnimation: WLBaseAnimation {
             
             fatalError("WLNaviAnimation 请确认有导航!")
         }
-    
+        
         var fromConfig: WLNaviAnimationConfig?
         
         if let __animation_config = from.__animation_config {
@@ -212,11 +212,13 @@ public class WLNaviAnimation: WLBaseAnimation {
                 cover.alpha = 0
                 
                 toBaseView.transform = CGAffineTransform.identity
+                
             }) { (isFinished) in
                 
                 if transitionContext.transitionWasCancelled {
                     
-                    from.navigationController?.isNavigationBarHidden = from.WL_prefersNavigationBarHidden()
+                    to.navigationController!.isNavigationBarHidden = from.WL_prefersNavigationBarHidden()
+                    
                 } else {
                     
                     from.view.removeFromSuperview()
@@ -270,7 +272,6 @@ public class WLNaviAnimation: WLBaseAnimation {
                 transitionContext.completeTransition(true)
                 
                 to.tabBarController?.tabBar.isHidden = to.WL_prefersTabbarHidden()
-            
             }
         }
     }
@@ -288,6 +289,10 @@ public class WLNaviAnimation: WLBaseAnimation {
         statusBar.barStyle = config.statusStyle
         
         statusBar.barTintColor = config.statusTintColor
+        
+        statusBar.isTranslucent = config.isTranslucent
+        
+        printLog(message: config.statusTintColor)
         
         topView.addSubview(statusBar)
         

@@ -115,5 +115,4 @@ extension WLBaseAnimation: WLBaseAnimationDelegate {
         
         delegate.popCancled()
     }
-    
 }

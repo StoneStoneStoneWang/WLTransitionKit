@@ -83,7 +83,6 @@ extension UIViewController {
         }
     }
     
-    
     @objc open func __WL_popPan_swizzled_viewDidLoad() {
         __WL_popPan_swizzled_viewDidLoad()
         
@@ -141,6 +140,10 @@ extension UIViewController: WLViewControllerPushAnimationDelegate {
     @objc open func WL_prefersTabbarHidden() -> Bool {
         
         return true
+    }
+    @objc open func WL_prefrersNaviTitle() -> String {
+        
+        return title ?? ""
     }
     
     @objc open var interactivePopTransition: UIPercentDrivenInteractiveTransition? {

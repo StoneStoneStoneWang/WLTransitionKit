@@ -34,6 +34,11 @@ public class ViewController: WLBaseViewController {
         
         
     }
+    
+    public override func configNaviItem() {
+        
+        title = "\(navigationController?.children.count)级"
+    }
 }
 
 extension ViewController {
@@ -41,8 +46,6 @@ extension ViewController {
     @objc func onClick() {
         
         let vc = aaaaa()
-        
-        vc.title = "二级"
         
         navigationController?.pushViewController(vc, animated: true)
     }
