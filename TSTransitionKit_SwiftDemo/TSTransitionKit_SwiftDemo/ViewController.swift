@@ -24,7 +24,7 @@ public class ViewController: WLBaseViewController {
         
         btn.addTarget(self, action: #selector(onClick), for: .touchUpInside)
         
-        view.backgroundColor = .white
+//        view.backgroundColor = .white
     }
     
     let btn = UIButton(type: .custom)
@@ -71,5 +71,10 @@ class aaaaa: ViewController {
     override func isAddPan() -> Bool {
         
         return true
+    }
+    
+    @objc open override func configOwnProperties() {
+        
+        view.backgroundColor = .yellow
     }
 }

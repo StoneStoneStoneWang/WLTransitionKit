@@ -57,6 +57,8 @@ public class WLNaviAnimation: WLBaseAnimation {
         
         fromConfig!.prefersTabbarHidden = from.WL_prefersTabbarHidden()
         
+        fromConfig!.isTranslucent = from.navigationController!.navigationBar.isTranslucent
+        
         from.__animation_config = fromConfig
         
         let duration = transitionDuration(using: transitionContext)
@@ -142,6 +144,8 @@ public class WLNaviAnimation: WLBaseAnimation {
             toConfig = WLNaviAnimationConfig()
         }
         
+        toConfig!.isTranslucent = to.navigationController!.navigationBar.isTranslucent
+        
         fromConfig!.naviImage = UIImage.viewTransformToImage(view: navi.navigationBar)
         
         fromConfig!.statusStyle = navi.navigationBar.barStyle
@@ -156,6 +160,8 @@ public class WLNaviAnimation: WLBaseAnimation {
         fromConfig!.prefersNavigationBarHidden = from.WL_prefersNavigationBarHidden()
         
         fromConfig!.prefersTabbarHidden = from.WL_prefersTabbarHidden()
+        
+        fromConfig!.isTranslucent = from.navigationController!.navigationBar.isTranslucent
         
         from.__animation_config = fromConfig
         
@@ -219,6 +225,9 @@ public class WLNaviAnimation: WLBaseAnimation {
                     
                     to.navigationController!.isNavigationBarHidden = from.WL_prefersNavigationBarHidden()
                     
+                    to.navigationItem.title = from.title
+                    
+                    printLog(message: from.title)
                 } else {
                     
                     from.view.removeFromSuperview()
@@ -292,13 +301,11 @@ public class WLNaviAnimation: WLBaseAnimation {
         
         statusBar.isTranslucent = config.isTranslucent
         
-        printLog(message: config.statusTintColor)
-        
         topView.addSubview(statusBar)
         
         topView.addSubview(naviImageView)
         
-        statusBar.isHidden = config.prefersNavigationBarHidden
+        topView.isHidden = config.prefersNavigationBarHidden
         
         return topView
     }
