@@ -28,4 +28,5 @@ return false
 
 return true
 }
+
 5.有导航的页面 在哪里viewwill设置  navigationController?.setNavigationBarHidden(false, animated: false)
