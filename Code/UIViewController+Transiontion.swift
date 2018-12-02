@@ -90,6 +90,31 @@ extension UIViewController {
             
             addPopPanGesture()
         }
+        
+        __animation_config = WLNaviAnimationConfig()
+    }
+    @objc open func __WL_popPan_swizzled_viewDidAppear(_ animated: Bool) {
+        __WL_popPan_swizzled_viewDidAppear(animated)
+
+        if let navi = navigationController {
+            
+            __animation_config!.naviImage = UIImage.viewTransformToImage(view: navi.navigationBar)
+            
+            __animation_config!.statusStyle = navi.navigationBar.barStyle
+            
+            __animation_config!.statusTintColor = navi.navigationBar.barTintColor ?? .clear
+            
+            __animation_config!.prefersNavigationBarHidden = WL_prefersNavigationBarHidden()
+            
+            __animation_config!.prefersTabbarHidden = WL_prefersTabbarHidden()
+            
+            __animation_config!.isTranslucent = navi.navigationBar.isTranslucent
+            
+            if let tab = tabBarController {
+                
+                __animation_config!.tabbarImage = UIImage.viewTransformToImage(view: tab.tabBar)
+            }
+        }
     }
 }
 
@@ -105,11 +130,19 @@ extension UIViewController {
     public static func popPanClassInit() {
         
         viewDidLoad_swizzleMethod
+        
+        viewDidApppear_swizzleMethod
     }
     
     fileprivate static let viewDidLoad_swizzleMethod: Void = {
         let originalSelector = #selector(viewDidLoad)
         let swizzledSelector = #selector(__WL_popPan_swizzled_viewDidLoad)
+        swizzlingForClass(UIViewController.self, originalSelector: originalSelector, swizzledSelector: swizzledSelector)
+    }()
+    
+    fileprivate static let viewDidApppear_swizzleMethod: Void = {
+        let originalSelector = #selector(viewDidAppear(_:))
+        let swizzledSelector = #selector(__WL_popPan_swizzled_viewDidAppear(_:))
         swizzlingForClass(UIViewController.self, originalSelector: originalSelector, swizzledSelector: swizzledSelector)
     }()
     
@@ -140,10 +173,6 @@ extension UIViewController: WLViewControllerPushAnimationDelegate {
     @objc open func WL_prefersTabbarHidden() -> Bool {
         
         return true
-    }
-    @objc open func WL_prefrersNaviTitle() -> String {
-        
-        return title ?? ""
     }
     
     @objc open var interactivePopTransition: UIPercentDrivenInteractiveTransition? {

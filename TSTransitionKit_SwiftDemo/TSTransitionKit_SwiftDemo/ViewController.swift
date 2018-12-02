@@ -1,8 +1,8 @@
 //
 //  ViewController.swift
-//  TSTransitionKit_SwiftDemo
+//  dddddd
 //
-//  Created by three stone 王 on 2018/11/20.
+//  Created by three stone 王 on 2018/12/2.
 //  Copyright © 2018年 three stone 王. All rights reserved.
 //
 
@@ -16,21 +16,32 @@ public class ViewController: WLBaseViewController {
     open override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(btn)
-        
-        btn.frame = CGRect(x: 0, y: 100, width: 100, height: 100)
-        
-        btn.backgroundColor = .red
-        
-        btn.addTarget(self, action: #selector(onClick), for: .touchUpInside)
-        
         //        view.backgroundColor = .white
     }
     
-    let btn = UIButton(type: .custom)
+    let btn = UIButton(type: .custom).then {
+        
+        $0.frame = CGRect(x: 0, y: 100, width: 100, height: 100)
+        
+        $0.backgroundColor = .red
+    }
+    public override func configOwnSubViews() {
+        
+        btn.addTarget(self, action: #selector(onClick), for: .touchUpInside)
+    }
+    public override func addOwnSubViews() {
+        
+        view.addSubview(btn)
+    }
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        
+    }
+    
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
@@ -39,10 +50,7 @@ public class ViewController: WLBaseViewController {
         
         title = "1级"
     }
-    public override func WL_prefrersNaviTitle() -> String {
-        
-        return "1级"
-    }
+    
 }
 
 extension ViewController {
@@ -70,20 +78,32 @@ extension ViewController {
     }
 }
 
-class aaaaa: ViewController {
+class aaaaa: WLBaseViewController {
+    
+    let btn = UIButton(type: .custom).then {
+        
+        $0.frame = CGRect(x: 0, y: 100, width: 100, height: 100)
+        
+        $0.backgroundColor = .red
+    }
+    public override func configOwnSubViews() {
+        
+        btn.addTarget(self, action: #selector(onClick), for: .touchUpInside)
+    }
+    public override func addOwnSubViews() {
+        
+        view.addSubview(btn)
+    }
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
+    
     public override func configNaviItem() {
         
         title = "2级"
-    }
-    public override func WL_prefrersNaviTitle() -> String {
-        
-        return "2级"
     }
     
     override func isAddPan() -> Bool {
@@ -99,7 +119,7 @@ class aaaaa: ViewController {
         
         return false
     }
-    override func onClick() {
+    @objc func onClick() {
         
         let vc = bbbbbb()
         
@@ -112,10 +132,7 @@ class bbbbbb: aaaaa {
         
         title = "3级"
     }
-    public override func WL_prefrersNaviTitle() -> String {
-        
-        return "3级"
-    }
+    
     override func onClick() {
         
         let vc = cccccc()
@@ -124,14 +141,27 @@ class bbbbbb: aaaaa {
     }
 }
 
-class cccccc: aaaaa {
+class cccccc: ViewController {
+    
+//    public override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//
+//        navigationController?.setNavigationBarHidden(true, animated: false)
+//    }
+    
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func isAddPan() -> Bool {
+        
+        return true
+    }
     
     public override func configNaviItem() {
         
         title = "4级"
-    }
-    public override func WL_prefrersNaviTitle() -> String {
-        
-        return "4级"
     }
 }

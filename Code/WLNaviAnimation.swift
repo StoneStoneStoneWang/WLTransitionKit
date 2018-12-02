@@ -19,6 +19,8 @@ import TSToolKit_Swift
 
 // 之后会加入其他的 push pop转场
 
+// 视图层级 window -> tabbar.view -> navi.view -> vc.view 转场时是有个container
+
 public class WLNaviAnimation: WLBaseAnimation {
     
     open override func push(_ transitionContext: UIViewControllerContextTransitioning) {
@@ -32,34 +34,7 @@ public class WLNaviAnimation: WLBaseAnimation {
             fatalError("WLNaviAnimation 请确认有导航!")
         }
         
-        var fromConfig: WLNaviAnimationConfig?
-        
-        if let __animation_config = from.__animation_config {
-            
-            fromConfig = __animation_config
-        } else {
-            
-            fromConfig = WLNaviAnimationConfig()
-        }
-        
-        fromConfig!.naviImage = UIImage.viewTransformToImage(view: navi.navigationBar)
-        
-        fromConfig!.statusStyle = navi.navigationBar.barStyle
-        
-        fromConfig!.statusTintColor = navi.navigationBar.barTintColor ?? .clear
-        
-        if let tab = from.tabBarController {
-            
-            fromConfig!.tabbarImage = UIImage.viewTransformToImage(view: tab.tabBar)
-        }
-        
-        fromConfig!.prefersNavigationBarHidden = from.WL_prefersNavigationBarHidden()
-        
-        fromConfig!.prefersTabbarHidden = from.WL_prefersTabbarHidden()
-        
-        fromConfig!.isTranslucent = from.navigationController!.navigationBar.isTranslucent
-        
-        from.__animation_config = fromConfig
+        let fromConfig: WLNaviAnimationConfig = from.__animation_config!
         
         let duration = transitionDuration(using: transitionContext)
         
@@ -67,13 +42,13 @@ public class WLNaviAnimation: WLBaseAnimation {
         
         fromBaseView.addSubview(from.view)
         
-        let topView = configTopView(config: fromConfig!)
+        let topView = configTopView(config: fromConfig)
         
         fromBaseView.addSubview(topView)
         
-        let tabbarImageView = UIImageView(image: fromConfig!.tabbarImage)
+        let tabbarImageView = UIImageView(image: fromConfig.tabbarImage)
         
-        tabbarImageView.frame = fromConfig!.tabbarFrame
+        tabbarImageView.frame = fromConfig.tabbarFrame
         
         fromBaseView.addSubview(tabbarImageView)
         
@@ -89,11 +64,13 @@ public class WLNaviAnimation: WLBaseAnimation {
         
         container.addSubview(to.view)
         
-        to.navigationController!.view.superview!.insertSubview(fromBaseView, belowSubview: to.navigationController!.view)
+        navi.view.superview!.insertSubview(fromBaseView, belowSubview: navi.view)
         
-        to.navigationController!.view.superview!.insertSubview(cover, belowSubview: to.navigationController!.view)
+        navi.view.superview!.insertSubview(cover, belowSubview: navi.view)
         
-        to.navigationController!.view.transform = CGAffineTransform.init(translationX: WL_SCREEN_WIDTH, y: 0)
+        navi.view.transform = CGAffineTransform.init(translationX: WL_SCREEN_WIDTH, y: 0)
+        
+        navi.isNavigationBarHidden = to.WL_prefersNavigationBarHidden()
         
         UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0, options: .curveLinear, animations: {
             
@@ -124,46 +101,7 @@ public class WLNaviAnimation: WLBaseAnimation {
             fatalError("WLNaviAnimation 请确认有导航!")
         }
         
-        var fromConfig: WLNaviAnimationConfig?
-        
-        if let __animation_config = from.__animation_config {
-            
-            fromConfig = __animation_config
-        } else {
-            
-            fromConfig = WLNaviAnimationConfig()
-        }
-        
-        var toConfig: WLNaviAnimationConfig?
-        
-        if let __animation_config = to.__animation_config {
-            
-            toConfig = __animation_config
-        } else {
-            
-            toConfig = WLNaviAnimationConfig()
-        }
-        
-        toConfig!.isTranslucent = to.navigationController!.navigationBar.isTranslucent
-        
-        fromConfig!.naviImage = UIImage.viewTransformToImage(view: navi.navigationBar)
-        
-        fromConfig!.statusStyle = navi.navigationBar.barStyle
-        
-        fromConfig!.statusTintColor = navi.navigationBar.barTintColor ?? .clear
-        
-        if let tab = from.tabBarController {
-            
-            fromConfig!.tabbarImage = UIImage.viewTransformToImage(view: tab.tabBar)
-        }
-        
-        fromConfig!.prefersNavigationBarHidden = from.WL_prefersNavigationBarHidden()
-        
-        fromConfig!.prefersTabbarHidden = from.WL_prefersTabbarHidden()
-        
-        fromConfig!.isTranslucent = from.navigationController!.navigationBar.isTranslucent
-        
-        from.__animation_config = fromConfig
+        let toConfig: WLNaviAnimationConfig = to.__animation_config!
         
         let duration = transitionDuration(using: transitionContext)
         
@@ -171,17 +109,15 @@ public class WLNaviAnimation: WLBaseAnimation {
         
         toBaseView.addSubview(to.view)
         
-        let topTopView = configTopView(config: toConfig!)
+        let topTopView = configTopView(config: toConfig)
         
-        let tabbarImageView = UIImageView(image: toConfig!.tabbarImage)
+        let tabbarImageView = UIImageView(image: toConfig.tabbarImage)
         
-        tabbarImageView.frame = toConfig!.tabbarFrame
+        tabbarImageView.frame = toConfig.tabbarFrame
         
         toBaseView.addSubview(topTopView)
         
         toBaseView.addSubview(tabbarImageView)
-        
-        to.navigationController!.isNavigationBarHidden = true
         
         toBaseView.transform = CGAffineTransform.init(scaleX: 0.95, y: 0.95)
         
@@ -195,25 +131,21 @@ public class WLNaviAnimation: WLBaseAnimation {
         
         container.addSubview(from.view)
         
-        from.navigationController!.view.superview!.insertSubview(toBaseView, belowSubview: from.navigationController!.view)
+        navi.view.superview!.insertSubview(toBaseView, belowSubview: navi.view)
         
-        from.navigationController!.view.superview!.insertSubview(cover, belowSubview: from.navigationController!.view)
+        navi.view.superview!.insertSubview(cover, belowSubview: navi.view)
         
-        let fromTopView = configTopView(config: fromConfig!)
+        navi.isNavigationBarHidden = from.WL_prefersNavigationBarHidden()
         
-        from.navigationController!.view.addSubview(fromTopView)
-        
-        from.navigationController!.view.transform = CGAffineTransform.identity
+        navi.view.transform = CGAffineTransform.identity
         
         to.tabBarController?.tabBar.isHidden = true
-        
-        to.navigationController!.isNavigationBarHidden = true
         
         if let _ = from.interactivePopTransition {
             
             UIView.animate(withDuration: duration, delay: 0, options: .curveLinear, animations: {
                 
-                from.navigationController!.view.transform = CGAffineTransform.init(translationX: WL_SCREEN_WIDTH, y: 0)
+                navi.view.transform = CGAffineTransform.init(translationX: WL_SCREEN_WIDTH, y: 0)
                 
                 cover.alpha = 0
                 
@@ -223,17 +155,12 @@ public class WLNaviAnimation: WLBaseAnimation {
                 
                 if transitionContext.transitionWasCancelled {
                     
-                    to.navigationController!.isNavigationBarHidden = from.WL_prefersNavigationBarHidden()
-                    
-                    from.navigationItem.title = from.WL_prefrersNaviTitle()
-
-                    printLog(message: from.WL_prefrersNaviTitle())
-                    
+                    navi.isNavigationBarHidden = from.WL_prefersNavigationBarHidden()
                 } else {
                     
                     from.view.removeFromSuperview()
                     
-                    to.navigationController!.isNavigationBarHidden = to.WL_prefersNavigationBarHidden()
+                    navi.isNavigationBarHidden = to.WL_prefersNavigationBarHidden()
                     
                     to.view.removeFromSuperview()
                     
@@ -241,16 +168,10 @@ public class WLNaviAnimation: WLBaseAnimation {
                     
                     to.tabBarController?.tabBar.isHidden = to.WL_prefersTabbarHidden()
                     
-                    to.navigationItem.title = to.WL_prefrersNaviTitle()
-                    
-                    printLog(message: to.WL_prefrersNaviTitle())
+                    navi.view.transform = .identity
                 }
                 
-                to.navigationController!.view.transform = .identity
-                
                 toBaseView.removeFromSuperview()
-                
-                fromTopView.removeFromSuperview()
                 
                 cover.removeFromSuperview()
                 
@@ -260,7 +181,7 @@ public class WLNaviAnimation: WLBaseAnimation {
             
             UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0, options: .curveLinear, animations: {
                 
-                from.navigationController!.view.transform = CGAffineTransform.init(translationX: WL_SCREEN_WIDTH, y: 0)
+                navi.view.transform = CGAffineTransform.init(translationX: WL_SCREEN_WIDTH, y: 0)
                 
                 cover.alpha = 0
                 
@@ -270,18 +191,16 @@ public class WLNaviAnimation: WLBaseAnimation {
                 
                 from.view.removeFromSuperview()
                 
-                to.navigationController!.view.transform = CGAffineTransform.identity
+                navi.view.transform = CGAffineTransform.identity
                 
-                to.navigationController!.isNavigationBarHidden = to.WL_prefersNavigationBarHidden()
+                navi.isNavigationBarHidden = to.WL_prefersNavigationBarHidden()
                 
                 to.view.removeFromSuperview()
                 
                 container.addSubview(to.view)
                 
                 toBaseView.removeFromSuperview()
-                
-                fromTopView.removeFromSuperview()
-                
+
                 transitionContext.completeTransition(true)
                 
                 to.tabBarController?.tabBar.isHidden = to.WL_prefersTabbarHidden()

@@ -34,7 +34,7 @@ open class WLNavigationControllerDelegateImpl: NSObject, UINavigationControllerD
             
         } else {
             
-            let animation = WLNaviAnimation.animation(operation, 1)
+            let animation = WLNaviAnimation.animation(operation, 0.5)
             
             animation.mDelegate = fromVC
             

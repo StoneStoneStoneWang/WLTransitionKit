@@ -15,7 +15,6 @@ class WLHomeViewController: WLBaseViewController {
         
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
-    
 }
 extension WLHomeViewController {
     
@@ -27,10 +26,7 @@ extension WLHomeViewController {
         
         return true
     }
-    open override func WL_prefrersNaviTitle() -> String {
-        
-        return "我的"
-    }
+    
     override open func configNaviItem() {
         
         title = "首页"

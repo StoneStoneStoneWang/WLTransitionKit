@@ -88,22 +88,22 @@ open class WLNaviController: UINavigationController {
 
     open override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         
-        if children.count > 0 {
-            
-            viewController.hidesBottomBarWhenPushed = true
-            
-            let shared = TSConfig_Swift.shared
-            
-            viewController.navigationItem.leftBarButtonItem = UIBarButtonItem.barButtonItem(imageName: shared.Back_Image, target: self, action: #selector(pop))
-        } else {
-            
-            if transitionType == .present {
-                
-                let shared = TSConfig_Swift.shared
-                
-                viewController.navigationItem.leftBarButtonItem = UIBarButtonItem.barButtonItem(imageName: shared.Back_Image, target: self, action: #selector(pop))
-            }
-        }
+//        if children.count > 0 {
+//
+//            viewController.hidesBottomBarWhenPushed = true
+//
+//            let shared = TSConfig_Swift.shared
+//
+//            viewController.navigationItem.leftBarButtonItem = UIBarButtonItem.barButtonItem(imageName: shared.Back_Image, target: self, action: #selector(pop))
+//        } else {
+//
+//            if transitionType == .present {
+//
+//                let shared = TSConfig_Swift.shared
+//
+//                viewController.navigationItem.leftBarButtonItem = UIBarButtonItem.barButtonItem(imageName: shared.Back_Image, target: self, action: #selector(pop))
+//            }
+//        }
         
         super.pushViewController(viewController, animated: animated)
     }
