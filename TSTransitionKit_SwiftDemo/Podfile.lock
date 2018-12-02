@@ -1,7 +1,7 @@
 PODS:
-  - TSBaseViewController_Swift (1.0.4):
+  - TSBaseViewController_Swift (1.0.5):
     - TSToolKit_Swift
-  - TSToolKit_Swift (1.1.1)
+  - TSToolKit_Swift (1.1.5)
 
 DEPENDENCIES:
   - TSBaseViewController_Swift (from `https://github.com/StoneStoneStoneWang/TSBaseViewController_Swift.git`)
@@ -15,15 +15,15 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   TSBaseViewController_Swift:
-    :commit: e6a268c72e03ff4e69962e636e91c7f5d45fef38
+    :commit: 8e5045db416a129cd3ee2b7ca99a2a0ddff25b53
     :git: https://github.com/StoneStoneStoneWang/TSBaseViewController_Swift.git
   TSToolKit_Swift:
-    :commit: caeca4da9fad868c2220a56fafadfb01d62df833
+    :commit: fd95590fbf398c55a27cbfcd298444618a203f0b
     :git: https://github.com/StoneStoneStoneWang/TSToolKit_Swift.git
 
 SPEC CHECKSUMS:
-  TSBaseViewController_Swift: 766419f59f4203e059d488bdafebe83b2b012fed
-  TSToolKit_Swift: 4f8605aaa825e634ba37e9b0b463337b61272e51
+  TSBaseViewController_Swift: 9fd2e4af888e1ec6efaad2c947f7c7ab94114fd9
+  TSToolKit_Swift: f6092a2daba6a757cfd970467c5ecdd796da8db8
 
 PODFILE CHECKSUM: 2255dd5b5176bd1c98c4e32e4d4b0765363c50cf
 

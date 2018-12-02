@@ -225,9 +225,8 @@ public class WLNaviAnimation: WLBaseAnimation {
                     
                     to.navigationController!.isNavigationBarHidden = from.WL_prefersNavigationBarHidden()
                     
-                    to.navigationItem.title = from.title
-                    
-                    printLog(message: from.title)
+                    from.navigationItem.title = from.WL_prefrersNaviTitle()
+
                 } else {
                     
                     from.view.removeFromSuperview()
@@ -240,6 +239,7 @@ public class WLNaviAnimation: WLBaseAnimation {
                     
                     to.tabBarController?.tabBar.isHidden = to.WL_prefersTabbarHidden()
                     
+                    to.navigationItem.title = to.WL_prefrersNaviTitle()
                 }
                 
                 to.navigationController!.view.transform = .identity
@@ -293,13 +293,11 @@ public class WLNaviAnimation: WLBaseAnimation {
         
         naviImageView.frame = config.naviFrame
         
-        let statusBar = UINavigationBar(frame: config.statusBarFrame)
+        let img = UIImage.wl_imageFromImage(config.naviImage, inRect: CGRect(x: 60, y: 20, width: 1, height: 1))
         
-        statusBar.barStyle = config.statusStyle
+        let statusBar = UIImageView(image: img)
         
-        statusBar.barTintColor = config.statusTintColor
-        
-        statusBar.isTranslucent = config.isTranslucent
+        statusBar.frame = config.statusBarFrame
         
         topView.addSubview(statusBar)
         

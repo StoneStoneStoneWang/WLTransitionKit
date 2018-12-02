@@ -24,7 +24,7 @@ public class ViewController: WLBaseViewController {
         
         btn.addTarget(self, action: #selector(onClick), for: .touchUpInside)
         
-//        view.backgroundColor = .white
+        //        view.backgroundColor = .white
     }
     
     let btn = UIButton(type: .custom)
@@ -32,18 +32,22 @@ public class ViewController: WLBaseViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     public override func configNaviItem() {
         
-        title = "\(navigationController?.children.count)级"
+        title = "1级"
+    }
+    public override func WL_prefrersNaviTitle() -> String {
+        
+        return "1级"
     }
 }
 
 extension ViewController {
     
-    @objc func onClick() {
+    @objc open func onClick() {
         
         let vc = aaaaa()
         
@@ -57,7 +61,7 @@ extension ViewController {
     
     @objc open override func WL_prefersNavigationBarHidden() -> Bool {
         
-        return false
+        return true
     }
     
     public override func isAddPan() -> Bool {
@@ -68,6 +72,20 @@ extension ViewController {
 
 class aaaaa: ViewController {
     
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    public override func configNaviItem() {
+        
+        title = "2级"
+    }
+    public override func WL_prefrersNaviTitle() -> String {
+        
+        return "2级"
+    }
+    
     override func isAddPan() -> Bool {
         
         return true
@@ -75,6 +93,45 @@ class aaaaa: ViewController {
     
     @objc open override func configOwnProperties() {
         
-        view.backgroundColor = .yellow
+        view.backgroundColor = .white
+    }
+    override func WL_prefersNavigationBarHidden() -> Bool {
+        
+        return false
+    }
+    override func onClick() {
+        
+        let vc = bbbbbb()
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+class bbbbbb: aaaaa {
+    
+    public override func configNaviItem() {
+        
+        title = "3级"
+    }
+    public override func WL_prefrersNaviTitle() -> String {
+        
+        return "3级"
+    }
+    override func onClick() {
+        
+        let vc = cccccc()
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+class cccccc: aaaaa {
+    
+    public override func configNaviItem() {
+        
+        title = "4级"
+    }
+    public override func WL_prefrersNaviTitle() -> String {
+        
+        return "4级"
     }
 }

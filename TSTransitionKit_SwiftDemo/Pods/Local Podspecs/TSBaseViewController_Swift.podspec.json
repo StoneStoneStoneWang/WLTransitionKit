@@ -1,6 +1,6 @@
 {
   "name": "TSBaseViewController_Swift",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "summary": "A Lib For vc.",
   "description": "A Lib For vc.",
   "homepage": "https://github.com/StoneStoneStoneWang/TSBaseViewController_Swift",
@@ -21,7 +21,7 @@
   ],
   "source": {
     "git": "https://github.com/StoneStoneStoneWang/TSBaseViewController_Swift.git",
-    "tag": "1.0.4"
+    "tag": "1.0.5"
   },
   "source_files": "Code/**/*.{swift}",
   "dependencies": {
