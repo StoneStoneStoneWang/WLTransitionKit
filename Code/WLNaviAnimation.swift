@@ -308,10 +308,3 @@ public class WLNaviAnimation: WLBaseAnimation {
         return topView
     }
 }
-extension WLNaviAnimation {
-    
-    @objc override public func popCancled() {
-        
-        
-    }
-}

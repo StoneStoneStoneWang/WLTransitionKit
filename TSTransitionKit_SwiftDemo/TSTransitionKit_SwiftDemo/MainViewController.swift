@@ -14,7 +14,7 @@ class MainViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let vc = ViewController()
+        let vc = WLHomeViewController()
         
         addChildVC(childVC: vc, title: "首页", fontSize: 12, titleColor: .red, highColor: .yellow, imageName: "", selectedImageName: "")
         
