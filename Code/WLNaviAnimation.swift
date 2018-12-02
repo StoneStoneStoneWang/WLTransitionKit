@@ -227,6 +227,8 @@ public class WLNaviAnimation: WLBaseAnimation {
                     
                     from.navigationItem.title = from.WL_prefrersNaviTitle()
 
+                    printLog(message: from.WL_prefrersNaviTitle())
+                    
                 } else {
                     
                     from.view.removeFromSuperview()
@@ -240,6 +242,8 @@ public class WLNaviAnimation: WLBaseAnimation {
                     to.tabBarController?.tabBar.isHidden = to.WL_prefersTabbarHidden()
                     
                     to.navigationItem.title = to.WL_prefrersNaviTitle()
+                    
+                    printLog(message: to.WL_prefrersNaviTitle())
                 }
                 
                 to.navigationController!.view.transform = .identity
