@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import TSToolKit_Swift
+import WLToolsKit
 open class WLBaseViewController: UIViewController {
     
     open var navBarHairlineImageView: UIImageView? {

@@ -3,7 +3,7 @@
 Pod::Spec.new do |s|
 
 s.name         = "WLTransitionKit"
-s.version      = "1.0.6"
+s.version      = "1.0.7"
 s.summary      = "A Lib For transition."
 s.description  = <<-DESC
 A Lib For transition.
@@ -23,9 +23,9 @@ s.source = { :git => "https://github.com/StoneStoneStoneWang/WLTransitionKit.git
 
 s.source_files = "Code/**/*.{swift}"
 
-s.dependency 'TSToolKit_Swift'
+s.dependency 'WLToolsKit'
 
-s.dependency 'TSBaseViewController_Swift'
+s.dependency 'WLBaseViewController'
 
 end
 

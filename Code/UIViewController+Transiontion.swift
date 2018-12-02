@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import TSToolKit_Swift
+import WLToolsKit
 private let WLPopPanResponseW: CGFloat = 100
 
 private var kAnimationConfigKey: String = ""

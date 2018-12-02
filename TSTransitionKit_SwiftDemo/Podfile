@@ -2,9 +2,10 @@ platform :ios, '9.0'
 use_frameworks!
 target 'TSTransitionKit_SwiftDemo' do
 
-pod 'TSToolKit_Swift',:git=>'https://github.com/StoneStoneStoneWang/TSToolKit_Swift.git'
+pod 'WLToolsKit'
 
-pod 'TSBaseViewController_Swift',:git=>'https://github.com/StoneStoneStoneWang/TSBaseViewController_Swift.git'
+pod 'WLBaseViewController'
+
 end
 
 

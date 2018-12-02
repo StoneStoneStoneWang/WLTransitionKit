@@ -8,8 +8,8 @@
 
 import UIKit
 
-import TSToolKit_Swift
-import TSBaseViewController_Swift
+import WLToolsKit
+import WLBaseViewController
 
 public class ViewController: WLBaseViewController {
     

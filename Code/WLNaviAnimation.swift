@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import TSToolKit_Swift
+import WLToolsKit
 
 // v 1.0.5 之前是有bug存在的 就是转场的时候 由于是屏幕截图 回导致一些效果 比如点击按钮的高亮状态 不是立即消失
 

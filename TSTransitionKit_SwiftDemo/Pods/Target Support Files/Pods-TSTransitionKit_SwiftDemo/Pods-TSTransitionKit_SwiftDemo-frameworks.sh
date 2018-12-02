@@ -143,12 +143,12 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/TSBaseViewController_Swift/TSBaseViewController_Swift.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/TSToolKit_Swift/TSToolKit_Swift.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/WLBaseViewController/WLBaseViewController.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/WLToolsKit/WLToolsKit.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/TSBaseViewController_Swift/TSBaseViewController_Swift.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/TSToolKit_Swift/TSToolKit_Swift.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/WLBaseViewController/WLBaseViewController.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/WLToolsKit/WLToolsKit.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

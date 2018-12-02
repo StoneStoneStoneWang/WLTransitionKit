@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import TSToolKit_Swift
+import WLToolsKit
 
 //extension UIViewController: SelfAware {
 //

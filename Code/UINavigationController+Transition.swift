@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import TSToolKit_Swift
+import WLToolsKit
 //Users/threestonewang/Desktop/新的仓库/TSTransitionKit_Swift/Code/UINavigationController+Transition.swift:12:35: Conformance of 'UINavigationController' to protocol 'UINavigationControllerDelegate' was already stated in the type's module 'UIKit'
 // MARK: 如果使用这个转场 请在 didluanch里 TSSingleLeton.needReg()
 // 我想做的是无入侵的代码

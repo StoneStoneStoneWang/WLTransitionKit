@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import TSToolKit_Swift
+import WLToolsKit
 // 在iOS7系统以上导航栏多了一个translucent属性。这个属性就是设置导航栏是否具有透明度这个功能。
 // [[UINavigationBar appearance] setTranslucent:NO];
 // self.navigationController.navigationBar.translucent = NO;

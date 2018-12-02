@@ -1,30 +1,21 @@
 PODS:
-  - TSBaseViewController_Swift (1.0.5):
-    - TSToolKit_Swift
-  - TSToolKit_Swift (1.1.5)
+  - WLBaseViewController (1.0.7):
+    - WLToolsKit
+  - WLToolsKit (1.1.8)
 
 DEPENDENCIES:
-  - TSBaseViewController_Swift (from `https://github.com/StoneStoneStoneWang/TSBaseViewController_Swift.git`)
-  - TSToolKit_Swift (from `https://github.com/StoneStoneStoneWang/TSToolKit_Swift.git`)
+  - WLBaseViewController
+  - WLToolsKit
 
-EXTERNAL SOURCES:
-  TSBaseViewController_Swift:
-    :git: https://github.com/StoneStoneStoneWang/TSBaseViewController_Swift.git
-  TSToolKit_Swift:
-    :git: https://github.com/StoneStoneStoneWang/TSToolKit_Swift.git
-
-CHECKOUT OPTIONS:
-  TSBaseViewController_Swift:
-    :commit: 8e5045db416a129cd3ee2b7ca99a2a0ddff25b53
-    :git: https://github.com/StoneStoneStoneWang/TSBaseViewController_Swift.git
-  TSToolKit_Swift:
-    :commit: fd95590fbf398c55a27cbfcd298444618a203f0b
-    :git: https://github.com/StoneStoneStoneWang/TSToolKit_Swift.git
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - WLBaseViewController
+    - WLToolsKit
 
 SPEC CHECKSUMS:
-  TSBaseViewController_Swift: 9fd2e4af888e1ec6efaad2c947f7c7ab94114fd9
-  TSToolKit_Swift: f6092a2daba6a757cfd970467c5ecdd796da8db8
+  WLBaseViewController: dfb667d894e3cfff323aa903da96935c4cca1161
+  WLToolsKit: d8a410e736f47ca36af259b8a14f2fb0cc5ccd7c
 
-PODFILE CHECKSUM: 2255dd5b5176bd1c98c4e32e4d4b0765363c50cf
+PODFILE CHECKSUM: 29c6563c1f981e82b9e8a6337f751b86892fbbca
 
 COCOAPODS: 1.5.3

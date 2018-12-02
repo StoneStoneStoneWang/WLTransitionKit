@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import TSToolKit_Swift
+import WLToolsKit
 public protocol WLViewControllerPushAnimationDelegate: NSObjectProtocol {
     
     func WL_prefersNavigationBarHidden() -> Bool

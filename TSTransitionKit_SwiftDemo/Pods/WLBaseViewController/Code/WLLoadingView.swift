@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import TSToolKit_Swift
+import WLToolsKit
 
 public typealias WLLoadingReloadAction = () -> ()
 

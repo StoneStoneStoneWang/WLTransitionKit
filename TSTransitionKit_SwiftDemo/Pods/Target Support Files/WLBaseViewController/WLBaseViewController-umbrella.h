@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double TSBaseViewController_SwiftVersionNumber;
-FOUNDATION_EXPORT const unsigned char TSBaseViewController_SwiftVersionString[];
+FOUNDATION_EXPORT double WLBaseViewControllerVersionNumber;
+FOUNDATION_EXPORT const unsigned char WLBaseViewControllerVersionString[];
 

@@ -1,5 +1,7 @@
 # WLTransitionKit
 
+pod 'WLTransitionKit'
+
 ## 这只是我想要的效果  参考的是今日头条的转场效果 
 
 ## 百度搜索得到的基本都是view的截图然后做转场动画 这种方式会导致from界面不刷新 比如tableview的点击效果在返回时才消失
