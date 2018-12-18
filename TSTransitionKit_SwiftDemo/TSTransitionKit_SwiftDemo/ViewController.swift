@@ -34,12 +34,6 @@ public class ViewController: WLBaseViewController {
         view.addSubview(btn)
     }
     
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
-    }
-    
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         

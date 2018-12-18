@@ -48,6 +48,10 @@ public class WLNaviAnimation: WLBaseAnimation {
         
         let tabbarImageView = UIImageView(image: fromConfig.tabbarImage)
         
+//        tabbarImageView.backgroundColor = .black
+        
+        printLog(message: to.__animation_config?.tabbarFrame)
+        
         tabbarImageView.frame = fromConfig.tabbarFrame
         
         fromBaseView.addSubview(tabbarImageView)

@@ -112,7 +112,10 @@ extension UIViewController {
             
             if let tab = tabBarController {
                 
-                __animation_config!.tabbarImage = UIImage.viewTransformToImage(view: tab.tabBar)
+                if __animation_config?.tabbarImage == nil {
+                    
+                    __animation_config!.tabbarImage = UIImage.viewTransformToImage(view: tab.tabBar)
+                }
             }
         }
     }
