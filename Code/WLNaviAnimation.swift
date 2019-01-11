@@ -220,7 +220,7 @@ public class WLNaviAnimation: WLBaseAnimation {
         
         naviImageView.frame = config.naviFrame
         
-        let img = UIImage.wl_imageFromImage(config.naviImage, inRect: CGRect(x: 60, y: 20, width: 1, height: 1))
+        let img = UIImage.wl_imageFromImage(config.naviImage, inRect: CGRect(x: 0, y: 0, width: 1, height: 1))
         
         let statusBar = UIImageView(image: img)
         
