@@ -13,7 +13,19 @@ private let WLPopPanResponseW: CGFloat = 100
 
 private var kAnimationConfigKey: String = ""
 
+private var kPopPanKey: String = ""
+
 extension UIViewController {
+    
+    open var __pop_pan_gesture: UIPanGestureRecognizer? {
+        
+        set {
+            objc_setAssociatedObject(self, &kPopPanKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+        get {
+            return objc_getAssociatedObject(self, &kPopPanKey) as? UIPanGestureRecognizer
+        }
+    }
     
     @objc open func isAddPan() -> Bool {
         
@@ -33,6 +45,8 @@ extension UIViewController {
                     view.addGestureRecognizer(popRecognizer)
                     
                     popRecognizer.delegate = self
+                    
+                    __pop_pan_gesture = popRecognizer
                 }
             }
         }
@@ -83,87 +97,57 @@ extension UIViewController {
         }
     }
     
-    @objc open func __WL_popPan_swizzled_viewDidLoad() {
-        __WL_popPan_swizzled_viewDidLoad()
+    public func configPopPan() {
         
         if isAddPan() {
             
             addPopPanGesture()
         }
         
-        __animation_config = WLNaviAnimationConfig()
+        if !(self is UINavigationController) && !(self is UITabBarController) {
+            
+            __animation_config = WLNaviAnimationConfig()
+        }
     }
-    @objc open func __WL_popPan_swizzled_viewDidAppear(_ animated: Bool) {
-        __WL_popPan_swizzled_viewDidAppear(animated)
-
-        if let navi = navigationController {
+    
+    public func configAnimationSetting() {
+        
+        if !(self is UINavigationController) && !(self is UITabBarController) {
             
-            __animation_config!.naviImage = UIImage.viewTransformToImage(view: navi.navigationBar)
-            
-            __animation_config!.statusStyle = navi.navigationBar.barStyle
-            
-            __animation_config!.statusTintColor = navi.navigationBar.barTintColor ?? .clear
-            
-            __animation_config!.prefersNavigationBarHidden = WL_prefersNavigationBarHidden()
-            
-            __animation_config!.prefersTabbarHidden = WL_prefersTabbarHidden()
-            
-            __animation_config!.isTranslucent = navi.navigationBar.isTranslucent
-            
-            if let tab = tabBarController {
+            if let navi = navigationController {
                 
-                if __animation_config?.tabbarImage == nil {
+                printLog(message: self)
+                
+                if __animation_config?.naviImage == nil {
                     
-                    __animation_config!.tabbarImage = UIImage.viewTransformToImage(view: tab.tabBar)
+                    __animation_config!.naviImage = UIImage.viewTransformToImage(view: navi.navigationBar)
+                }
+                
+                __animation_config!.statusStyle = navi.navigationBar.barStyle
+                
+                __animation_config!.statusTintColor = navi.navigationBar.barTintColor ?? .clear
+                
+                __animation_config!.prefersNavigationBarHidden = WL_prefersNavigationBarHidden()
+                
+                __animation_config!.prefersTabbarHidden = WL_prefersTabbarHidden()
+                
+                __animation_config!.isTranslucent = navi.navigationBar.isTranslucent
+                
+                if let tab = tabBarController {
+                    
+                    if __animation_config?.tabbarImage == nil {
+                        
+                        __animation_config!.tabbarImage = UIImage.viewTransformToImage(view: tab.tabBar)
+                    }
                 }
             }
         }
     }
+    
 }
 
-extension UIViewController: UIGestureRecognizerDelegate {
-    
-    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        
-        return gestureRecognizer.location(in: view).x > 0 && gestureRecognizer.location(in: view).x < popPanResponseW()
-    }
-}
-extension UIViewController {
-    
-    public static func popPanClassInit() {
-        
-        viewDidLoad_swizzleMethod
-        
-        viewDidApppear_swizzleMethod
-    }
-    
-    fileprivate static let viewDidLoad_swizzleMethod: Void = {
-        let originalSelector = #selector(viewDidLoad)
-        let swizzledSelector = #selector(__WL_popPan_swizzled_viewDidLoad)
-        swizzlingForClass(UIViewController.self, originalSelector: originalSelector, swizzledSelector: swizzledSelector)
-    }()
-    
-    fileprivate static let viewDidApppear_swizzleMethod: Void = {
-        let originalSelector = #selector(viewDidAppear(_:))
-        let swizzledSelector = #selector(__WL_popPan_swizzled_viewDidAppear(_:))
-        swizzlingForClass(UIViewController.self, originalSelector: originalSelector, swizzledSelector: swizzledSelector)
-    }()
-    
-    fileprivate static func swizzlingForClass(_ forClass: AnyClass, originalSelector: Selector, swizzledSelector: Selector) {
-        let originalMethod = class_getInstanceMethod(forClass, originalSelector)
-        let swizzledMethod = class_getInstanceMethod(forClass, swizzledSelector)
-        
-        guard (originalMethod != nil && swizzledMethod != nil) else {
-            return
-        }
-        
-        if class_addMethod(forClass, originalSelector, method_getImplementation(swizzledMethod!), method_getTypeEncoding(swizzledMethod!)) {
-            class_replaceMethod(forClass, swizzledSelector, method_getImplementation(originalMethod!), method_getTypeEncoding(originalMethod!))
-        } else {
-            method_exchangeImplementations(originalMethod!, swizzledMethod!)
-        }
-    }
-}
+
+
 private var kInteractiveKey: String = ""
 
 extension UIViewController: WLViewControllerPushAnimationDelegate {

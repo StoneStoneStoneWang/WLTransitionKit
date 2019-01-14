@@ -1,21 +1,29 @@
 PODS:
+  - FlowingMenu (3.1.0)
+  - LGSideMenuController (2.1.1)
   - WLBaseViewController (1.0.7):
     - WLToolsKit
   - WLToolsKit (1.1.8)
 
 DEPENDENCIES:
+  - FlowingMenu
+  - LGSideMenuController
   - WLBaseViewController
   - WLToolsKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - FlowingMenu
+    - LGSideMenuController
     - WLBaseViewController
     - WLToolsKit
 
 SPEC CHECKSUMS:
+  FlowingMenu: 73573e05bad7af8932206a390d56e63acbd9f12a
+  LGSideMenuController: ae40c80983ab8b8801c7cef0a6804d43aaa72d45
   WLBaseViewController: dfb667d894e3cfff323aa903da96935c4cca1161
   WLToolsKit: d8a410e736f47ca36af259b8a14f2fb0cc5ccd7c
 
-PODFILE CHECKSUM: 29c6563c1f981e82b9e8a6337f751b86892fbbca
+PODFILE CHECKSUM: 95c625f468557e5781fc4f6e456b7a5bdfd32955
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.0.beta.2

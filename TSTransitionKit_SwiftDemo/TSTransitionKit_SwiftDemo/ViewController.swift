@@ -11,7 +11,15 @@ import UIKit
 import WLToolsKit
 import WLBaseViewController
 
+protocol ViewControllerDelegate {
+    
+    func onClickt()
+}
+
+
 public class ViewController: WLBaseViewController {
+    
+    var delegate: ViewControllerDelegate!
     
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,42 +42,68 @@ public class ViewController: WLBaseViewController {
         view.addSubview(btn)
     }
     
-    public override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        navigationController?.setNavigationBarHidden(true, animated: false)
-    }
+//    public override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        
+//        navigationController?.setNavigationBarHidden(true, animated: false)
+//    }
     
     public override func configNaviItem() {
         
         title = "1级"
     }
     
-}
-
-extension ViewController {
-    
-    @objc open func onClick() {
+    public override func configOwnProperties() {
         
-        let vc = aaaaa()
+        view.backgroundColor = .white
         
-        navigationController?.pushViewController(vc, animated: true)
     }
-    
-    @objc open override func WL_prefersTabbarHidden() -> Bool {
-        
-        return false
-    }
-    
-    @objc open override func WL_prefersNavigationBarHidden() -> Bool {
+    public override func isAddPan() -> Bool {
         
         return true
     }
-    
-    public override func isAddPan() -> Bool {
+}
+
+extension ViewController {
+
+    @objc open func onClick() {
         
+        let aaa = aaaaa()
+//
+        self.sideMenuController?.hideLeftView(animated: true, completionHandler: nil)
+
+        let tab = self.sideMenuController?.rootViewController as! MainViewController
+
+        let navi = tab.selectedViewController as! WLNaviController
+
+//        let navi = self.sideMenuController?.rootViewController as! WLNaviController
+        
+        navi.pushViewController(aaa, animated: true)
+        
+//        self.delegate.onClickt()
+        
+//        dismiss(animated: true) {
+//
+//
+//        }
+        
+//        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc open override func WL_prefersTabbarHidden() -> Bool {
+
         return false
     }
+
+    @objc open override func WL_prefersNavigationBarHidden() -> Bool {
+
+        return false
+    }
+//
+//    public override func isAddPan() -> Bool {
+//
+//        return false
+//    }
 }
 
 class aaaaa: WLBaseViewController {
@@ -91,7 +125,7 @@ class aaaaa: WLBaseViewController {
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
@@ -119,6 +153,8 @@ class aaaaa: WLBaseViewController {
         
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    
 }
 class bbbbbb: aaaaa {
     

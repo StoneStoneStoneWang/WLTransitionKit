@@ -1,10 +1,10 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/WLBaseViewController" "${PODS_CONFIGURATION_BUILD_DIR}/WLToolsKit"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/FlowingMenu" "${PODS_CONFIGURATION_BUILD_DIR}/LGSideMenuController" "${PODS_CONFIGURATION_BUILD_DIR}/WLBaseViewController" "${PODS_CONFIGURATION_BUILD_DIR}/WLToolsKit"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/FlowingMenu/FlowingMenu.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/LGSideMenuController/LGSideMenuController.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/WLBaseViewController/WLBaseViewController.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/WLToolsKit/WLToolsKit.framework/Headers"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_CFLAGS = $(inherited) -iquote "${PODS_CONFIGURATION_BUILD_DIR}/WLBaseViewController/WLBaseViewController.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/WLToolsKit/WLToolsKit.framework/Headers"
-OTHER_LDFLAGS = $(inherited) -framework "WLBaseViewController" -framework "WLToolsKit"
-OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
+OTHER_LDFLAGS = $(inherited) -framework "FlowingMenu" -framework "Foundation" -framework "LGSideMenuController" -framework "QuartzCore" -framework "UIKit" -framework "WLBaseViewController" -framework "WLToolsKit"
+OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_PODFILE_DIR_PATH = ${SRCROOT}/.

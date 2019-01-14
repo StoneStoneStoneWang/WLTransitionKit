@@ -6,6 +6,9 @@ pod 'WLToolsKit'
 
 pod 'WLBaseViewController'
 
+pod 'LGSideMenuController'
+
+pod 'FlowingMenu'
 end
 
 

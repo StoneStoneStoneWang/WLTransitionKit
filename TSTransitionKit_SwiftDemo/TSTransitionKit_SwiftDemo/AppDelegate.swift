@@ -9,11 +9,13 @@
 import UIKit
 import WLToolsKit
 import WLBaseViewController
+import FlowingMenu
+import LGSideMenuController
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -24,7 +26,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        window?.rootViewController = MainViewController()
+        let center = LGSideMenuController(rootViewController:MainViewController(), leftViewController: ViewController(), rightViewController: nil)
+        
+        center.leftViewPresentationStyle = .slideAbove
+    
+        center.leftViewWidth = 250
+        
+        window?.rootViewController = center
         
         window?.makeKeyAndVisible()
         

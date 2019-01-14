@@ -10,6 +10,8 @@
 		5C6EFA9ABF059C04553997F8 /* Pods_TSTransitionKit_SwiftDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04651AD0C6E2701193D340EF /* Pods_TSTransitionKit_SwiftDemo.framework */; };
 		6C0A653821B3BD2E009969D3 /* WLHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0A653721B3BD2E009969D3 /* WLHomeViewController.swift */; };
 		6C3876F321A9541C008C44BA /* WLNaviAnimationConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3876F221A9541C008C44BA /* WLNaviAnimationConfig.swift */; };
+		6C3AE4AA21EC69D50091A418 /* UIViewController+WLHandleGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3AE4A921EC69D50091A418 /* UIViewController+WLHandleGesture.swift */; };
+		6C3AE4AC21EC6A930091A418 /* UIViewController+WLSwizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3AE4AB21EC6A930091A418 /* UIViewController+WLSwizzling.swift */; };
 		6C410C8D21A44C22008FBA44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C410C8C21A44C22008FBA44 /* AppDelegate.swift */; };
 		6C410C8F21A44C22008FBA44 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C410C8E21A44C22008FBA44 /* ViewController.swift */; };
 		6C410C9421A44C23008FBA44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C410C9321A44C23008FBA44 /* Assets.xcassets */; };
@@ -49,6 +51,8 @@
 		5CE1C7B9330A8AEE68E2BB68 /* Pods-TSTransitionKit_SwiftDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TSTransitionKit_SwiftDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TSTransitionKit_SwiftDemo/Pods-TSTransitionKit_SwiftDemo.release.xcconfig"; sourceTree = "<group>"; };
 		6C0A653721B3BD2E009969D3 /* WLHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLHomeViewController.swift; sourceTree = "<group>"; };
 		6C3876F221A9541C008C44BA /* WLNaviAnimationConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLNaviAnimationConfig.swift; sourceTree = "<group>"; };
+		6C3AE4A921EC69D50091A418 /* UIViewController+WLHandleGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+WLHandleGesture.swift"; sourceTree = "<group>"; };
+		6C3AE4AB21EC6A930091A418 /* UIViewController+WLSwizzling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+WLSwizzling.swift"; sourceTree = "<group>"; };
 		6C410C8921A44C22008FBA44 /* TSTransitionKit_SwiftDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TSTransitionKit_SwiftDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C410C8C21A44C22008FBA44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6C410C8E21A44C22008FBA44 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +173,8 @@
 			isa = PBXGroup;
 			children = (
 				6C410CBB21A44D05008FBA44 /* UIViewController+Transiontion.swift */,
+				6C3AE4AB21EC6A930091A418 /* UIViewController+WLSwizzling.swift */,
+				6C3AE4A921EC69D50091A418 /* UIViewController+WLHandleGesture.swift */,
 				6C3876F221A9541C008C44BA /* WLNaviAnimationConfig.swift */,
 				6C410CBD21A44F4D008FBA44 /* WLBaseAnimation.swift */,
 				6C410CBF21A4583B008FBA44 /* WLNaviAnimation.swift */,
@@ -348,7 +354,9 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TSTransitionKit_SwiftDemo/Pods-TSTransitionKit_SwiftDemo-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-TSTransitionKit_SwiftDemo/Pods-TSTransitionKit_SwiftDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FlowingMenu/FlowingMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/LGSideMenuController/LGSideMenuController.framework",
 				"${BUILT_PRODUCTS_DIR}/WLBaseViewController/WLBaseViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/WLToolsKit/WLToolsKit.framework",
 			);
@@ -356,12 +364,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlowingMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LGSideMenuController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WLBaseViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WLToolsKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TSTransitionKit_SwiftDemo/Pods-TSTransitionKit_SwiftDemo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TSTransitionKit_SwiftDemo/Pods-TSTransitionKit_SwiftDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -377,11 +387,13 @@
 				6C410CC021A4583B008FBA44 /* WLNaviAnimation.swift in Sources */,
 				6C410CCE21A6B514008FBA44 /* WLNavigationControllerDelegateImpl.swift in Sources */,
 				6C410CBE21A44F4D008FBA44 /* WLBaseAnimation.swift in Sources */,
+				6C3AE4AA21EC69D50091A418 /* UIViewController+WLHandleGesture.swift in Sources */,
 				6C410CBC21A44D05008FBA44 /* UIViewController+Transiontion.swift in Sources */,
 				6C410CC221A45AD3008FBA44 /* WLViewControllerPushAnimationDelegate.swift in Sources */,
 				6C3876F321A9541C008C44BA /* WLNaviAnimationConfig.swift in Sources */,
 				6C410CC621A505D0008FBA44 /* UINavigationController+Transition.swift in Sources */,
 				6C410CC821A5068B008FBA44 /* MainViewController.swift in Sources */,
+				6C3AE4AC21EC6A930091A418 /* UIViewController+WLSwizzling.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

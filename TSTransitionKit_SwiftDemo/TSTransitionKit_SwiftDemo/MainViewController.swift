@@ -9,10 +9,14 @@
 import UIKit
 import WLToolsKit
 import WLBaseViewController
-class MainViewController: UITabBarController {
+import LGSideMenuController
 
+class MainViewController: UITabBarController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        printLog(message: "viewDidLoad")
         
         let vc = WLHomeViewController()
         
@@ -22,6 +26,6 @@ class MainViewController: UITabBarController {
         
         addChildVC(childVC: vc1, title: "我的", fontSize: 12, titleColor: .red, highColor: .yellow, imageName: "", selectedImageName: "")
         
+        selectedViewController = children[0]
     }
-
 }
