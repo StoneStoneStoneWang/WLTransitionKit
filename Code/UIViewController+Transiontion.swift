@@ -97,7 +97,7 @@ extension UIViewController {
         }
     }
     
-    public func configPopPan() {
+    @objc open func configPopPan() {
         
         if isAddPan() {
             
@@ -110,7 +110,7 @@ extension UIViewController {
         }
     }
     
-    public func configAnimationSetting() {
+    @objc open func configAnimationSetting() {
         
         if !(self is UINavigationController) && !(self is UITabBarController) {
             
@@ -145,8 +145,6 @@ extension UIViewController {
     }
     
 }
-
-
 
 private var kInteractiveKey: String = ""
 

@@ -13,6 +13,10 @@ import FlowingMenu
 
 class WLHomeViewController: WLBaseViewController {
     
+    let flowingMenuTransitionManager = FlowingMenuTransitionManager()
+
+    let menu: UIViewController = WLHomeViewController11()
+    
     let aView = UIView()
     
     let btn = UIButton(type: .custom).then {
@@ -24,6 +28,13 @@ class WLHomeViewController: WLBaseViewController {
     public override func configOwnSubViews() {
         
         btn.addTarget(self, action: #selector(onClick), for: .touchUpInside)
+        
+//        flowingMenuTransitionManager.setInteractivePresentationView(view)
+//        
+//        // Add the delegate to respond to interactive transition events
+//        flowingMenuTransitionManager.delegate = self
+//        
+//        menu.transitioningDelegate = flowingMenuTransitionManager
     }
     public override func addOwnSubViews() {
         
@@ -37,22 +48,33 @@ class WLHomeViewController: WLBaseViewController {
         self.navigationController?.pushViewController(aaa, animated: true)
     }
 }
-
-extension WLHomeViewController {
+extension WLHomeViewController: FlowingMenuDelegate {
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    func flowingMenuNeedsPresentMenu(_ flowingMenu: FlowingMenuTransitionManager) {
         
+        present(menu, animated: true, completion: nil)
+    }
+    func flowingMenu(_ flowingMenu: FlowingMenuTransitionManager, widthOfMenuView menuView: UIView) -> CGFloat {
         
+        return 250
     }
     
+}
+extension WLHomeViewController {
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+
     open override func WL_prefersTabbarHidden() -> Bool {
         
         return false
     }
     open override func WL_prefersNavigationBarHidden() -> Bool {
         
-        return false
+        return true
     }
     
     override open func configNaviItem() {

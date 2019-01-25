@@ -72,11 +72,11 @@ extension ViewController {
 //
         self.sideMenuController?.hideLeftView(animated: true, completionHandler: nil)
 
-        let tab = self.sideMenuController?.rootViewController as! MainViewController
+//        let tab = self.sideMenuController?.rootViewController as! WLNaviController
+//
+//        let navi = tab.selectedViewController as! WLNaviController
 
-        let navi = tab.selectedViewController as! WLNaviController
-
-//        let navi = self.sideMenuController?.rootViewController as! WLNaviController
+        let navi = self.sideMenuController?.rootViewController as! WLNaviController
         
         navi.pushViewController(aaa, animated: true)
         

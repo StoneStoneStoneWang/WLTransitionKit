@@ -26,11 +26,15 @@ extension UINavigationController {
             return objc_getAssociatedObject(self, &kimplKey) as? WLNavigationControllerDelegateImpl
         }
     }
-    
-    open override func __WL_popPan_swizzled_viewDidLoad() {
+    open override func viewDidLoad() {
+        super.viewDidLoad()
         
         __wl_impl = WLNavigationControllerDelegateImpl()
         
+        NSSelectorFromString("")
+        
         delegate = __wl_impl
+        
     }
+    
 }

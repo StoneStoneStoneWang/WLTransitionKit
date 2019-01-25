@@ -11,18 +11,25 @@ import UIKit
 
 extension UIViewController {
     
+    
     @objc open func __WL_popPan_swizzled_viewDidLoad() {
         __WL_popPan_swizzled_viewDidLoad()
         
         configPopPan()
-    }
-    
-    @objc open func __WL_popPan_swizzled_viewDidAppear(_ animated: Bool) {
-        __WL_popPan_swizzled_viewDidAppear(animated)
         
         configAnimationSetting()
     }
+    // MARK: 预留 遇到的问题是经过pod 之后发现不执行 这个代码 不经过pod的话 是执行这段代码的
+    // 分析原因可能是包含行参之后 pod和原生swift函数以及行参命名空间的问题  不知道对不对 也只能想到这个原因了
+    // 比如类 NSClassFromString("TSTransitionKit_SwiftDemo.WLHomeViewController")
+    // 比如函数 NSSelectorFromString("__WL_popPan_swizzled_viewDidAppearWithAnimated:")
+    @objc open func __WL_popPan_swizzled_viewDidAppear(_ animated: Bool) {
+        __WL_popPan_swizzled_viewDidAppear(animated)
+        
+        
+    }
 }
+
 extension UIViewController {
     
     public static func popPanClassInit() {

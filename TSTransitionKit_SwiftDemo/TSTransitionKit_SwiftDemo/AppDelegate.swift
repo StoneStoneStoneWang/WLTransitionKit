@@ -22,11 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         WLSingleLeton.needReg()
         
-        UIViewController.popPanClassInit()
+//        UIViewController.popPanClassInit()
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        let center = LGSideMenuController(rootViewController:MainViewController(), leftViewController: ViewController(), rightViewController: nil)
+        let center = LGSideMenuController(rootViewController:WLNaviController(rootViewController: WLHomeViewController()), leftViewController: ViewController(), rightViewController: nil)
         
         center.leftViewPresentationStyle = .slideAbove
     
